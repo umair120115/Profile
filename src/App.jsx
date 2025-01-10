@@ -1,13 +1,14 @@
 import { BrowserRouter,Routes,Route,Navigate } from "react-router-dom"
-import FirstPage from "./components/firstPage";
+import FirstPage from "./components/FirstPage";
 import Projects from "./components/Projects";
 import Education from "./components/Education";
 import Contact from "./components/Contact";
+import { HashRouter } from "react-router-dom";
 function App() {
   
 
   return (
-    <BrowserRouter >
+    <HashRouter >
          <Routes>
                 <Route path="/" element={<FirstPage/>}/>
                 <Route path="/projects" element={<Projects/>}/>
@@ -17,7 +18,7 @@ function App() {
          </Routes>
     
     
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
