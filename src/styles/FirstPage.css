@@ -1,148 +1,206 @@
-/* General Styles */
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  color: #333;
-  background: linear-gradient(to right, #ece9e6, #ffffff);
+/* FirstPage.css */
+
+/* --- RESET & VARIABLES --- */
+:root {
+  --bg-dark: #0f172a;
+  --card-bg: rgba(30, 41, 59, 0.85); /* Darker, more opaque for better contrast */
+  --card-border: rgba(255, 255, 255, 0.1);
+  --primary: #6366f1; 
+  --accent: #10b981; 
+  --text-main: #f8fafc; /* White text */
+  --text-muted: #94a3b8;
 }
 
-/* Intro Section */
-.intro-section {
-  position: relative;
-  text-align: center;
-  padding: 60px 20px;
-  background: linear-gradient(to bottom, #6a11cb, #2575fc);
-  color: white;
-}
-
-.intro-section .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
+/* Force the wrapper to cover the whole screen and set background */
+.portfolio-wrapper {
+  background-color: var(--bg-dark) !important;
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.15), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.15), transparent 25%) !important;
+  min-height: 100vh;
   width: 100%;
-  height: 100%;
-  opacity: 0.3;
-  background: black;
-  z-index: -1;
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
 }
 
-.profile-pic {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  margin-bottom: 20px;
-}
-
-.intro-text h1 {
-  font-size: 36px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.intro-text p {
-  font-size: 16px;
-  line-height: 1.6;
-  margin-top: 10px;
-}
-
-/* Skill Section */
-.skill-container {
+/* --- BENTO CONTAINER --- */
+.bento-container {
+  max-width: 1100px;
+  margin: 0 auto;
   padding: 40px 20px;
+  box-sizing: border-box;
 }
 
-.skill-heading {
-  text-align: center;
-  font-size: 24px;
-  margin-bottom: 30px;
-  color: #444;
-}
-
-.skills {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+/* --- GRID LAYOUT --- */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Changed to 3 columns for better stability */
+  grid-template-rows: auto;
   gap: 20px;
 }
 
-.skill {
-  background: #f9f9f9;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-  width: 120px;
+/* --- CARD STYLING --- */
+.bento-card {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(12px);
+  color: var(--text-main); /* Ensure text is white */
 }
 
-.skill i {
-  font-size: 40px;
-  color: #6a11cb;
+.bento-card h1, .bento-card h2, .bento-card h3, .bento-card h4 {
+  color: #fff !important; /* Force headers white */
+  margin-top: 0;
 }
 
-.skill span {
-  display: block;
+/* --- SPECIFIC CARDS --- */
+
+/* Hero: Takes up 2/3rds width */
+.hero-card {
+  grid-column: span 2;
+  display: flex;
+  align-items: center;
+  min-height: 280px;
+}
+
+/* Current Focus: Top right corner */
+.role-card {
+  grid-column: span 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Socials: Small bar below Hero */
+.social-card {
+  grid-column: span 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Tech Stack: Wide bar */
+.tech-card {
+  grid-column: span 2;
+}
+
+/* Experience: Bottom Left */
+.experience-card {
+  grid-column: span 1;
+}
+
+/* Project: Bottom Right (Wide) */
+.project-card {
+  grid-column: span 2;
+}
+
+/* --- CONTENT STYLES --- */
+.hero-content {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.image-wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.profile-img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 3px solid var(--primary);
+  object-fit: cover;
+}
+
+.status-indicator {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
   margin-top: 10px;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.skill:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-}
-.experience {
-  padding: 2rem;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-  margin: 2rem auto;
-  font-family: 'Arial', sans-serif;
-  color: #333;
-}
-
-.heading {
-  font-size: 2rem;
-  color: #4a90e2;
   text-align: center;
-  margin-bottom: 1rem;
+  display: inline-block;
 }
 
-.experience-details {
-  padding: 1rem;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.hero-text h1 {
+  font-size: 2.2rem;
+  margin-bottom: 5px;
 }
 
-.role-company {
-  font-size: 1.5rem;
-  color: #333;
-  font-weight: bold;
-}
-
-.role-period {
-  font-size: 1rem;
-  color: #777;
-  margin-bottom: 1rem;
-}
-
-.role-description {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-}
-
-.role-responsibilities {
-  list-style-type: disc;
-  padding-left: 1.5rem;
-  margin: 0;
-}
-
-.role-responsibilities li {
-  margin: 0.5rem 0;
+.hero-text p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
   line-height: 1.5;
-  font-size: 1rem;
-  color: #555;
+  margin-bottom: 20px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  padding: 10px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.btn-glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 10px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+/* Tech Grid Fix */
+.tech-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tech-item {
+  background: rgba(255, 255, 255, 0.08); /* Lighter bg for visibility */
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #e2e8f0;
+}
+
+/* Icons */
+.social-link {
+  font-size: 1.8rem;
+  color: var(--text-muted);
+}
+.social-link:hover { color: var(--primary); }
+
+/* --- RESPONSIVE FIX --- */
+@media (max-width: 900px) {
+  .bento-grid {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
 }

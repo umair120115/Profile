@@ -1,140 +1,201 @@
+import React from "react";
+import { motion } from "framer-motion";
+import { FaGithub, FaExternalLinkAlt, FaYoutube, FaCode, FaRobot, FaMobileAlt } from "react-icons/fa";
 import Navbar from "./Navbar";
-import '../styles/Projects.css'; // Add this CSS file
-import OnlineVoting1 from '../assets/voting1.png'; // Replace with your actual image paths
-import OnlineVoting2 from '../assets/voting2.png';
-import OnlineVoting3 from '../assets/voting3.png';
-import OnlineVoting8 from '../assets/voting8.png';
-import pdf1 from '../assets/pff1.png';
-import pdf2 from '../assets/pdf2.png';
-import pdf3 from '../assets/pdf3.png';  
 import Footer from "./Footer";
+import '../styles/Projects.css';
+
+// --- ASSETS (Keep your imports) ---
+import OnlineVoting2 from '../assets/voting2.png';
+import pdf1 from '../assets/pff1.png';
+// Import other assets as needed...
+
+// --- PROJECT DATA ---
+const projectsData = [
+  {
+    id: 1,
+    title: "Autonomous Agentic Data System",
+    category: "AI & Agents",
+    icon: <FaRobot />,
+    tech: ["LangGraph", "LangChain", "Gemini LLM", "Python", "JSON/CSV Writers"],
+    description: "An end-to-end agentic AI system that autonomously plans, executes, and validates synthetic data generation tasks.",
+    features: [
+      "Autonomous reasoning & planning (Intent -> Plan -> Tool Selection)",
+      "Self-correction loop (Generator -> Critic -> Retry)",
+      "Multi-format output generation (JSON, CSV, PDF, TXT)",
+      "Schema inference from arbitrary input files",
+      "Full observability with reasoning logs"
+    ],
+    github: "https://github.com/umair120115/Agent---Data-Simulator", // UPDATE THIS LINK
+    videoUrl: "https://www.youtube.com/embed/ol_GwpXmkIA", // UNCOMMENT & ADD ID
+    image: null ,// Set to null if using video, or add a diagram image,
+    youtubeUrl:"https://www.youtube.com/watch?v=ol_GwpXmkIA"
+  },
+  {
+    id: 2,
+    title: "Adora Mobile Ecosystem",
+    category: "Mobile App",
+    icon: <FaMobileAlt />,
+    tech: ["React Native", "Expo", "Django", "AWS S3", "Firebase"],
+    description: "A full-stack social platform featuring real-time feeds, media sharing, and secure authentication.",
+    features: [
+      "Real-time social feeds & interactions",
+      "Google OAuth integration for seamless onboarding",
+      "AWS S3 for scalable media storage",
+      "Firebase Cloud Messaging (FCM) for push notifications"
+    ],
+    github: "https://github.com/umair120115/Adora", // UPDATE THIS LINK
+    videoUrl: "https://www.youtube.com/embed/KTwa1HyzDRg",
+    image: null,
+    youtubeUrl:"https://www.youtube.com/watch?v=KTwa1HyzDRg"
+  },
+  {
+    id: 3,
+    title: "Online Voting System",
+    category: "Web App",
+    icon: <FaCode />,
+    tech: ["Django", "ReactJS", "LangChain", "Llama 3", "Groq Cloud"],
+    description: "A secure, interactive voting platform with an integrated AI chatbot for voter education.",
+    features: [
+      "Secure RESTful API backend with Django REST Framework",
+      "AI Chatbot powered by Llama 3 & Groq for democracy education",
+      "JWT Authentication & Role-based access control",
+      "Real-time voting results visualization"
+    ],
+    github: "https://www.github.com/umair120115/OnlineVoting",
+    image: OnlineVoting2
+  },
+  {
+    id: 4,
+    title: "Online PDF Viewer & Note Taker",
+    category: "EdTech",
+    icon: <FaCode />,
+    tech: ["ReactJS", "Django DRF", "OpenAI API", "PDF.js"],
+    description: "A smart document reader allowing users to upload PDFs, take time-stamped notes, and query content using AI.",
+    features: [
+      "AI-powered document querying (RAG-lite)",
+      "Context-aware note taking linked to specific PDF pages",
+      "Cloud storage for user documents",
+      "Responsive React frontend"
+    ],
+    github: "https://www.github.com/umair120115/Reader",
+    image: pdf1
+  },
+  {
+    id: 5,
+    title: "Deen Social Media",
+    category: "Real-time System",
+    icon: <FaCode />,
+    tech: ["Django Channels", "Redis", "ReactJS", "WebSockets"],
+    description: "A real-time social networking platform focused on community connection and instant messaging.",
+    features: [
+      "Instant messaging using WebSockets & Redis",
+      "Dynamic feeds with Like/Comment functionality",
+      "User relationship management (Follow/Unfollow)",
+      "ASGI asynchronous backend architecture"
+    ],
+    github: "https://www.github.com/umair120115/Deen",
+    image: null
+  }
+];
+
+// --- COMPONENTS ---
+
+const VideoEmbed = ({ url }) => (
+  <div className="video-container">
+    <iframe 
+      src={url} 
+      title="Project Demo" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowFullScreen
+    ></iframe>
+  </div>
+);
+
+const ProjectCard = ({ project }) => {
+  return (
+    <motion.div 
+      className="project-card-glass"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="card-header">
+        <div className="icon-box">{project.icon}</div>
+        <div className="header-text">
+          <span className="category-tag">{project.category}</span>
+          <h3>{project.title}</h3>
+        </div>
+      </div>
+
+      <div className="card-content">
+        <div className="media-section">
+          {project.videoUrl ? (
+            <VideoEmbed url={project.videoUrl} />
+          ) : (
+             project.image ? (
+              <img src={project.image} alt={project.title} className="project-img" />
+             ) : (
+              <div className="placeholder-media">
+                <span>🎥 Video Coming Soon</span>
+              </div>
+             )
+          )}
+        </div>
+
+        <div className="info-section">
+          <p className="description">{project.description}</p>
+          
+          <div className="tech-stack">
+            {project.tech.map((t, index) => (
+              <span key={index} className="tech-badge">{t}</span>
+            ))}
+          </div>
+
+          <ul className="features-list">
+            {project.features.map((feature, idx) => (
+              <li key={idx}>{feature}</li>
+            ))}
+          </ul>
+
+          <div className="card-actions">
+            <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn-github">
+              <FaGithub /> Source Code
+            </a>
+            {project.videoUrl && (
+               <a href={project.youtubeUrl} target="_blank" rel="noopener noreferrer" className="btn-demo">
+               <FaYoutube /> Watch Demo
+             </a>
+            )}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
 function Projects() {
   return (
-    <>
+    <div className="projects-wrapper">
       <Navbar />
-      <div className="projects-section">
-        <h1 className="projects-title">My Projects</h1>
-        <p className="projects-intro">Here are some of my most exciting projects:</p>
+      
+      <header className="projects-hero">
+        <h1 className="gradient-title">Engineering Showcase</h1>
+        <p className="subtitle">
+          From <strong>Autonomous Agents</strong> to <strong>Scalable Social Platforms</strong>.
+          <br /> Explore my latest R&D and production-grade applications.
+        </p>
+      </header>
 
-        <div className="project-details">
-          <div className="project-card">
-            <h2>Online Voting System</h2>
-            <p>
-              <strong>Tech Stacks:</strong> Python, Django, axios, react-router-dom, 
-              djangorestframework, ReactJS, JavaScript, LangChain, JWT, Llama 3, 
-              Groq Cloud, Hugging Face
-            </p>
-            <ul>
-              <h3>Features:</h3>
-              <li>
-                A web-based application for understanding voting concepts, casting 
-                online votes, learning about democracy, and organizing voting events 
-                for organizations.
-              </li>
-              <li>Frontend developed using React and its libraries.</li>
-              <li>Backend developed using Django REST Framework with RESTful APIs.</li>
-              <li>
-                Learning chatbot integrated using LLMs, LangChain, Hugging Face, 
-                Groq Cloud, and Meta AI's open-source model Llama3.
-              </li>
-              <li>
-                <strong>Source code:</strong> Check it out on 
-                 <a href="https://www.github.com/umair120115/OnlineVoting" target="_blank" rel="noopener noreferrer">
-                   GitHub
-                </a>
-              </li>
-            </ul>
-            <p><strong>Project Screenshots:</strong></p>
-            <div className="project-images">
-              {/* <img src={OnlineVoting1} alt="Online Voting Screenshot 1" /> */}
-              <img src={OnlineVoting2} alt="Online Voting Screenshot 2" />
-              <img src={OnlineVoting3} alt="Online Voting Screenshot 3" />
-              <img src={OnlineVoting8} alt="Online Voting Screenshot 8" />
-            </div>
-          </div>
-        </div>
+      <div className="projects-grid">
+        {projectsData.map((project) => (
+          <ProjectCard key={project.id} project={project} />
+        ))}
       </div>
-      <div className="projects-section">
-        {/* <h1 className="projects-title">My Projects</h1>
-        <p className="projects-intro">Here are some of my most exciting projects:</p> */}
 
-        <div className="project-details">
-          <div className="project-card">
-            <h2>Online PDF Viewer</h2>
-            <p>
-              <strong>Tech Stacks:</strong> Python, Django, axios, react-router-dom, 
-              djangorestframework, ReactJS, JavaScript, LangChain, JWT, Llama 3, 
-              Groq Cloud, Hugging Face
-            </p>
-            <ul>
-              <h3>Features:</h3>
-              <li>
-                A web based pdf viewer for reading and learning purpose.
-              </li>
-              <li>Frontend developed using React and its libraries.</li>
-              <li>Backend developed using Django REST Framework with RESTful APIs.</li>
-              <li>
-                A chatbot using openai  for querying the pdf topics and questions.
-                A note making interface with specifyied date and time.
-                User can add multiple pdf to their profile and can access it and also read their noted from where ever they want to which makes anytime access to their sudy materials.
-              </li>
-              <li>
-                <strong>Source code:</strong> Check it out on 
-                <a href="https://www.github.com/umair120115/Reader" target="_blank" rel="noopener noreferrer">
-                   GitHub
-                </a>
-              </li>
-            </ul>
-            <p><strong>Project Screenshots:</strong></p>
-            <div className="project-images">
-              <img src={pdf1} alt="Online Voting Screenshot 1" />
-              <img src={pdf2} alt="Online Voting Screenshot 2" />
-              <img src={pdf3} alt="Online Voting Screenshot 3" />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="projects-section">
-        {/* <h1 className="projects-title">My Projects</h1>
-        <p className="projects-intro">Here are some of my most exciting projects:</p> */}
-
-        <div className="project-details">
-          <div className="project-card">
-            <h2>Deen Social Media</h2>
-            <p>
-              <strong>Tech Stacks:</strong> Python, Django, axios, react-router-dom, 
-              djangorestframework, ReactJS, JavaScript, django-channels, JWT, redis( message-broker) 
-            </p>
-            <ul>
-              <h3>Features:</h3>
-              <li>
-                A web based social application for people to connect with each other and share their thoughts and ideas.
-              </li>
-              <li>Frontend developed using React and its libraries.</li>
-              <li>Backend developed using Django REST Framework with RESTful APIs.</li>
-              <li>
-                Functionalities like posting images, commenting on posts, liking posts, following users, messaging users, and many more.
-                it is basically asgi application with real-time messaging.
-
-              </li>
-              <li>
-                <strong>Source code:</strong> Check it out on 
-                <a href="https://www.github.com/umair120115/Deen" target="_blank" rel="noopener noreferrer">
-                   GitHub
-                </a>
-              </li>
-            </ul>
-            {/* <p><strong>Project Screenshots:</strong></p>
-            <div className="project-images">
-              <img src={pdf1} alt="Online Voting Screenshot 1" />
-              <img src={pdf2} alt="Online Voting Screenshot 2" />
-              <img src={pdf3} alt="Online Voting Screenshot 3" />
-            </div> */}
-          </div>
-        </div>
-      </div>
-      <Footer/>
-    </>
+      <Footer />
+    </div>
   );
 }
 
