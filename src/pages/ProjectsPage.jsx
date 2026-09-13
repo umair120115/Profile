@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { LIVE_PLATFORMS, ALL_PROJECTS } from '../data/portfolioData';
 import VideoEmbed from '../components/VideoEmbed';
 import BookNavigation from '../components/BookNavigation';
-import { Terminal, ExternalLink, Play, Layers, Globe, Code2 } from 'lucide-react';
-import { FaGithub, FaYoutube, FaExternalLinkAlt } from 'react-icons/fa';
+import { Terminal, ExternalLink, Play, Globe } from 'lucide-react';
+import { FaGithub, FaYoutube } from 'react-icons/fa';
 
 export default function ProjectsPage() {
   const [filter, setFilter] = useState('all');
@@ -42,7 +42,7 @@ export default function ProjectsPage() {
           <div className="section-header-block">
             <div className="section-pill">
               <Terminal size={14} />
-              <span>Chapter 03 • Engineering Showcase & Demonstrations</span>
+              <span>Featured Systems & Demonstrations</span>
             </div>
             <h1 className="section-main-title">
               Projects, Deployments & Video Demonstrations
@@ -191,7 +191,7 @@ export default function ProjectsPage() {
       <BookNavigation
         currentPage={3}
         totalPages={4}
-        prevChapter={{ title: "Professional Experience", path: "/experience" }}
+        prevChapter={{ title: "Experience", path: "/experience" }}
         nextChapter={{ title: "Education & Contact", path: "/education" }}
       />
     </div>

@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { Menu, X, FileText, BookOpen } from 'lucide-react';
+import { Menu, X, FileText } from 'lucide-react';
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
 
   const navItems = [
-    { label: '01 Overview', path: '/' },
-    { label: '02 Experience', path: '/experience' },
-    { label: '03 Projects & Demos', path: '/projects' },
-    { label: '04 Education & Contact', path: '/education' },
+    { label: 'Overview', path: '/' },
+    { label: 'Experience', path: '/experience' },
+    { label: 'Projects & Demos', path: '/projects' },
+    { label: 'Education & Contact', path: '/education' },
   ];
 
   return (
@@ -22,7 +22,7 @@ export default function Navbar() {
           <span className="dot">.</span>
         </Link>
 
-        {/* Chapter Tabs */}
+        {/* Navigation Tabs without numbers */}
         <ul className="navbar-links book-tabs">
           {navItems.map((item) => {
             const isActive = location.pathname === item.path;
@@ -45,7 +45,7 @@ export default function Navbar() {
             href={PERSONAL_INFO.resumeLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-secondary btn-sm"
+            className="btn btn-secondary btn-sm resume-btn"
           >
             <FileText size={14} />
             <span>Resume</span>

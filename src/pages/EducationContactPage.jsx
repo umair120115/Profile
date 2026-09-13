@@ -1,8 +1,8 @@
 import React from 'react';
-import { EDUCATION_TIMELINE, HONORS, CERTIFICATIONS, PERSONAL_INFO } from '../data/portfolioData';
+import { EDUCATION_TIMELINE, HONORS, CERTIFICATIONS } from '../data/portfolioData';
 import ContactSection from '../components/ContactSection';
 import BookNavigation from '../components/BookNavigation';
-import { GraduationCap, Award, CheckCircle, ExternalLink, Calendar, MapPin } from 'lucide-react';
+import { GraduationCap, Award, CheckCircle, MapPin } from 'lucide-react';
 import { FaGraduationCap, FaAward, FaCertificate } from 'react-icons/fa';
 
 export default function EducationContactPage() {
@@ -13,7 +13,7 @@ export default function EducationContactPage() {
           <div className="section-header-block">
             <div className="section-pill">
               <GraduationCap size={14} />
-              <span>Chapter 04 • Academic Foundation & Credentials</span>
+              <span>Academic Foundation & Credentials</span>
             </div>
             <h1 className="section-main-title">
               Education, Honors & Direct Contact
@@ -120,7 +120,7 @@ export default function EducationContactPage() {
       <BookNavigation
         currentPage={4}
         totalPages={4}
-        prevChapter={{ title: "Projects & Video Demonstrations", path: "/projects" }}
+        prevChapter={{ title: "Projects & Demos", path: "/projects" }}
         nextChapter={null}
       />
     </div>

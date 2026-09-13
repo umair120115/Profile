@@ -15,7 +15,7 @@ export default function OverviewPage() {
         currentPage={1}
         totalPages={4}
         prevChapter={null}
-        nextChapter={{ title: "Professional Experience", path: "/experience" }}
+        nextChapter={{ title: "Experience", path: "/experience" }}
       />
     </div>
   );

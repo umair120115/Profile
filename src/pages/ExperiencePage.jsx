@@ -1,9 +1,20 @@
 import React from 'react';
 import { EXPERIENCE_TIMELINE } from '../data/portfolioData';
 import BookNavigation from '../components/BookNavigation';
-import { Briefcase, ExternalLink, CheckCircle2, ShieldCheck, Zap, Database, Terminal, ArrowUpRight } from 'lucide-react';
+import { Briefcase, Zap, ShieldCheck, Database, Layers, ArrowUpRight, Cpu } from 'lucide-react';
 
 export default function ExperiencePage() {
+  // Helper to assign a clean icon to each contribution
+  const getContribIcon = (index) => {
+    const icons = [
+      <Database size={16} color="#00d2ff" />,
+      <Zap size={16} color="#10b981" />,
+      <ShieldCheck size={16} color="#38bdf8" />,
+      <Layers size={16} color="#f59e0b" />
+    ];
+    return icons[index % icons.length];
+  };
+
   return (
     <div className="page-wrapper fade-in-page">
       <section className="experience-page-section">
@@ -11,13 +22,13 @@ export default function ExperiencePage() {
           <div className="section-header-block">
             <div className="section-pill">
               <Briefcase size={14} />
-              <span>Chapter 02 • Production Architecture & Systems</span>
+              <span>Production Architecture & Leadership</span>
             </div>
             <h1 className="section-main-title">
               Professional Experience & Contributions
             </h1>
             <p className="section-subtitle">
-              Detailed engineering contributions across enterprise multi-tenant operating systems, high-concurrency microservices, and automated machine-to-machine cloud architectures.
+              Architectural contributions across multi-tenant enterprise SaaS systems, high-concurrency microservices, and automated machine-to-machine cloud infrastructures.
             </p>
           </div>
 
@@ -60,12 +71,14 @@ export default function ExperiencePage() {
                   <p>{role.summary}</p>
                 </div>
 
-                {/* Detailed Contribution Cards */}
+                {/* Detailed Contribution Cards without numbering */}
                 <div className="experience-contributions-grid">
                   {role.contributions.map((contrib, idx) => (
                     <div key={idx} className="experience-contrib-card">
                       <div className="experience-contrib-header">
-                        <span className="contrib-index">0{idx + 1}</span>
+                        <div className="contrib-icon-box">
+                          {getContribIcon(idx)}
+                        </div>
                         <h3 className="experience-contrib-title">{contrib.title}</h3>
                       </div>
                       <p className="experience-contrib-desc">{contrib.desc}</p>
@@ -81,8 +94,8 @@ export default function ExperiencePage() {
       <BookNavigation
         currentPage={2}
         totalPages={4}
-        prevChapter={{ title: "Overview & Identity", path: "/" }}
-        nextChapter={{ title: "Projects & Video Demonstrations", path: "/projects" }}
+        prevChapter={{ title: "Overview", path: "/" }}
+        nextChapter={{ title: "Projects & Demos", path: "/projects" }}
       />
     </div>
   );
