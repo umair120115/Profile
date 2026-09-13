@@ -1,76 +1,73 @@
 import React from 'react';
-import { FaLinkedin, FaGithub, FaEnvelope, FaPhone } from 'react-icons/fa';
-import '../styles/Footer.css';
+import { PERSONAL_INFO } from '../data/portfolioData';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { ArrowUp } from 'lucide-react';
 
-function Footer() {
+export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer className="footer">
-      <div className="footer-container">
-        
-        {/* Brand Section */}
-        <div className="footer-logo">
-          <h2>Umair Ahmad<span style={{ color: '#6366f1' }}>.</span></h2>
-          <p>Full Stack AI Engineer</p>
-          <p style={{ fontSize: '0.85rem', marginTop: '5px' }}>
-            Building scalable systems & intelligent agents.
-          </p>
-        </div>
+    <footer className="footer-wrapper">
+      <div className="container">
+        <div className="footer-content">
+          <div className="footer-meta">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <span style={{ fontWeight: 800, color: '#f8fafc', fontSize: '1.05rem' }}>
+                {PERSONAL_INFO.name}
+              </span>
+              <span style={{ color: '#00d2ff', fontWeight: 800 }}>.</span>
+            </div>
+            <p className="footer-copy">
+              © {new Date().getFullYear()} {PERSONAL_INFO.name}. All rights reserved.
+            </p>
+            <p className="footer-attribution">
+              Engineered with React 18, Vite & Google Stitch Design System • Deployed on GitHub Pages
+            </p>
+          </div>
 
-        {/* Social Links */}
-        <div className="footer-social">
-          <h3>Connect</h3>
-          <div className="social-icons">
-            <a 
-              href="https://www.linkedin.com/in/umair120115/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="social-icon"
-              aria-label="LinkedIn"
+          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+            <div className="footer-social-links">
+              <a
+                href={PERSONAL_INFO.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-social-btn"
+                aria-label="GitHub"
+              >
+                <FaGithub />
+              </a>
+              <a
+                href={PERSONAL_INFO.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-social-btn"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedin />
+              </a>
+              <a
+                href={`mailto:${PERSONAL_INFO.email}`}
+                className="footer-social-btn"
+                aria-label="Email"
+              >
+                <FaEnvelope />
+              </a>
+            </div>
+
+            <button
+              onClick={scrollToTop}
+              className="btn btn-secondary btn-sm"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+              aria-label="Back to top"
             >
-              <FaLinkedin />
-            </a>
-            <a 
-              href="https://github.com/umair120115" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="social-icon"
-              aria-label="GitHub"
-            >
-              <FaGithub />
-            </a>
-            <a 
-              href="mailto:ua16453@gmail.com" 
-              className="social-icon"
-              aria-label="Email"
-            >
-              <FaEnvelope />
-            </a>
+              <span>Top</span>
+              <ArrowUp size={14} />
+            </button>
           </div>
         </div>
-
-        {/* Contact Info */}
-        <div className="footer-contact">
-          <h3>Contact</h3>
-          <p>
-            <FaEnvelope style={{ fontSize: '0.9rem' }} /> 
-            <a href="mailto:ua16453@gmail.com">ua16453@gmail.com</a>
-          </p>
-          <p>
-            <FaPhone style={{ fontSize: '0.9rem' }} /> 
-            <span>+91 79055 67038</span>
-          </p>
-          <p style={{ fontSize: '0.85rem', marginTop: '10px' }}>
-             Lucknow, India (Open to Remote)
-          </p>
-        </div>
-      </div>
-
-      {/* Copyright */}
-      <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} Umair Ahmad. Designed with React & Glassmorphism.</p>
       </div>
     </footer>
   );
 }
-
-export default Footer;
