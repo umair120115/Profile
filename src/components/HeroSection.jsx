@@ -1,14 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { ArrowRight, FileText, ExternalLink, ShieldCheck, Zap, Terminal } from 'lucide-react';
+import { ArrowRight, FileText, Briefcase, Zap, Terminal } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import ProfilePic from '../assets/umair.jpeg';
 
 export default function HeroSection() {
-  const scrollToPlatforms = () => {
-    const el = document.getElementById('platforms');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
+  const navigate = useNavigate();
 
   return (
     <section id="hero" className="hero-section">
@@ -37,9 +35,26 @@ export default function HeroSection() {
             </p>
 
             <div className="hero-actions">
-              <button onClick={scrollToPlatforms} className="btn btn-primary">
-                <span>Explore Live Platforms</span>
+              <button
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  navigate('/projects');
+                }}
+                className="btn btn-primary"
+              >
+                <span>Explore Projects & Demos</span>
                 <ArrowRight size={16} />
+              </button>
+
+              <button
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                  navigate('/experience');
+                }}
+                className="btn btn-secondary"
+              >
+                <Briefcase size={16} />
+                <span>View Experience</span>
               </button>
 
               <a
@@ -49,7 +64,7 @@ export default function HeroSection() {
                 className="btn btn-secondary"
               >
                 <FileText size={16} />
-                <span>View Full Resume</span>
+                <span>Resume</span>
               </a>
             </div>
 
@@ -107,24 +122,24 @@ export default function HeroSection() {
               </div>
 
               <div className="hero-stat-grid">
-                <div className="hero-stat-box">
+                <div className="hero-stat-box" onClick={() => navigate('/projects')} style={{ cursor: 'pointer' }}>
                   <div className="hero-stat-val">4</div>
-                  <div className="hero-stat-lbl">Live Production Platforms</div>
+                  <div className="hero-stat-lbl">Live Production Platforms ↗</div>
                 </div>
 
-                <div className="hero-stat-box">
+                <div className="hero-stat-box" onClick={() => navigate('/projects')} style={{ cursor: 'pointer' }}>
                   <div className="hero-stat-val" style={{ color: '#00d2ff' }}>SIH '26</div>
-                  <div className="hero-stat-lbl">National Finalist (DoLR)</div>
+                  <div className="hero-stat-lbl">National Finalist (DoLR) ↗</div>
                 </div>
 
-                <div className="hero-stat-box">
+                <div className="hero-stat-box" onClick={() => navigate('/experience')} style={{ cursor: 'pointer' }}>
                   <div className="hero-stat-val" style={{ color: '#10b981' }}>&lt; 50ms</div>
-                  <div className="hero-stat-lbl">P99 Query Latency</div>
+                  <div className="hero-stat-lbl">P99 Query Latency ↗</div>
                 </div>
 
-                <div className="hero-stat-box">
+                <div className="hero-stat-box" onClick={() => navigate('/education')} style={{ cursor: 'pointer' }}>
                   <div className="hero-stat-val">M.Tech</div>
-                  <div className="hero-stat-lbl">CSE @ Integral Univ ('27)</div>
+                  <div className="hero-stat-lbl">CSE @ Integral Univ ('27) ↗</div>
                 </div>
               </div>
             </div>

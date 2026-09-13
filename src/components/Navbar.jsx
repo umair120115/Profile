@@ -1,57 +1,43 @@
 import React, { useState } from 'react';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import { PERSONAL_INFO } from '../data/portfolioData';
-import { Menu, X, FileText, ExternalLink } from 'lucide-react';
+import { Menu, X, FileText, BookOpen } from 'lucide-react';
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
 
-  const scrollTo = (id) => {
-    setMobileOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const navItems = [
+    { label: '01 Overview', path: '/' },
+    { label: '02 Experience', path: '/experience' },
+    { label: '03 Projects & Demos', path: '/projects' },
+    { label: '04 Education & Contact', path: '/education' },
+  ];
 
   return (
     <header className="navbar-wrapper">
       <nav className="navbar-container">
-        <a href="#hero" className="navbar-brand" onClick={(e) => { e.preventDefault(); scrollTo('hero'); }}>
+        <Link to="/" className="navbar-brand">
           <span>Umair Ahmad</span>
           <span className="dot">.</span>
-        </a>
+        </Link>
 
-        <ul className="navbar-links">
-          <li>
-            <a href="#platforms" onClick={(e) => { e.preventDefault(); scrollTo('platforms'); }}>
-              Live Platforms
-            </a>
-          </li>
-          <li>
-            <a href="#ai-paradigm" onClick={(e) => { e.preventDefault(); scrollTo('ai-paradigm'); }}>
-              AI Paradigm
-            </a>
-          </li>
-          <li>
-            <a href="#projects" onClick={(e) => { e.preventDefault(); scrollTo('projects'); }}>
-              Research & Systems
-            </a>
-          </li>
-          <li>
-            <a href="#arsenal" onClick={(e) => { e.preventDefault(); scrollTo('arsenal'); }}>
-              Arsenal
-            </a>
-          </li>
-          <li>
-            <a href="#experience" onClick={(e) => { e.preventDefault(); scrollTo('experience'); }}>
-              Experience
-            </a>
-          </li>
-          <li>
-            <a href="#contact" onClick={(e) => { e.preventDefault(); scrollTo('contact'); }}>
-              Contact
-            </a>
-          </li>
+        {/* Chapter Tabs */}
+        <ul className="navbar-links book-tabs">
+          {navItems.map((item) => {
+            const isActive = location.pathname === item.path;
+            return (
+              <li key={item.path}>
+                <NavLink
+                  to={item.path}
+                  className={`chapter-tab ${isActive ? 'active' : ''}`}
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                >
+                  {item.label}
+                </NavLink>
+              </li>
+            );
+          })}
         </ul>
 
         <div className="navbar-actions">
@@ -75,29 +61,25 @@ export default function Navbar() {
         </div>
       </nav>
 
+      {/* Mobile Drawer */}
       {mobileOpen && (
         <div className="mobile-drawer">
-          <a href="#hero" onClick={(e) => { e.preventDefault(); scrollTo('hero'); }}>
-            Home
-          </a>
-          <a href="#platforms" onClick={(e) => { e.preventDefault(); scrollTo('platforms'); }}>
-            Live Production Platforms
-          </a>
-          <a href="#ai-paradigm" onClick={(e) => { e.preventDefault(); scrollTo('ai-paradigm'); }}>
-            AI-First Paradigm
-          </a>
-          <a href="#projects" onClick={(e) => { e.preventDefault(); scrollTo('projects'); }}>
-            Research & Systems
-          </a>
-          <a href="#arsenal" onClick={(e) => { e.preventDefault(); scrollTo('arsenal'); }}>
-            Technical Arsenal
-          </a>
-          <a href="#experience" onClick={(e) => { e.preventDefault(); scrollTo('experience'); }}>
-            Experience & Education
-          </a>
-          <a href="#contact" onClick={(e) => { e.preventDefault(); scrollTo('contact'); }}>
-            Contact & Hire
-          </a>
+          {navItems.map((item) => (
+            <Link
+              key={item.path}
+              to={item.path}
+              onClick={() => {
+                setMobileOpen(false);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              style={{
+                color: location.pathname === item.path ? '#00d2ff' : '#f8fafc',
+                fontWeight: location.pathname === item.path ? '700' : '500'
+              }}
+            >
+              {item.label}
+            </Link>
+          ))}
           <a
             href={PERSONAL_INFO.resumeLink}
             target="_blank"

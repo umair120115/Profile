@@ -9,7 +9,7 @@ export const PERSONAL_INFO = {
   phone: "+91 79055 67038",
   github: "https://github.com/Umair120115",
   linkedin: "https://www.linkedin.com/in/umair-ahmad-793440241/",
-  resumeLink: "https://drive.google.com/file/d/1hKaEpG82Npf6gqAAsYxh9eIJIVpwbNMA/view?usp=sharing",
+  resumeLink: "https://drive.google.com/file/d/1UiIoIddNIgcMUi38XfXhXXpdV_0LgdhJ/view?usp=sharing",
 };
 
 export const LIVE_PLATFORMS = [
@@ -103,12 +103,62 @@ export const LIVE_PLATFORMS = [
   }
 ];
 
-export const OTHER_PROJECTS = [
+export const ALL_PROJECTS = [
+  {
+    id: "agent-data-simulator",
+    title: "Autonomous Agentic Data System",
+    category: "AI & Autonomous Agents",
+    badge: "Agentic AI R&D",
+    tech: ["LangGraph", "LangChain", "Gemini LLM", "Python", "JSON/CSV Writers"],
+    description: "An end-to-end agentic AI system that autonomously plans, executes, and validates synthetic data generation tasks using recursive feedback loops.",
+    highlights: [
+      "Autonomous reasoning & planning pipeline: User Intent -> Execution Plan -> Tool Selection.",
+      "Self-correction and validation loop (Generator -> Critic -> Self-Retry) to guarantee schema compliance.",
+      "Multi-format output generation across structured JSON, tabular CSV, PDF, and text streams.",
+      "Dynamic schema inference from arbitrary input files with complete LLM reasoning logs."
+    ],
+    github: "https://github.com/umair120115/Agent---Data-Simulator",
+    videoEmbed: "https://www.youtube.com/embed/ol_GwpXmkIA",
+    youtubeUrl: "https://www.youtube.com/watch?v=ol_GwpXmkIA"
+  },
+  {
+    id: "adora-mobile",
+    title: "Adora Mobile Ecosystem",
+    category: "Mobile & Full-Stack",
+    badge: "Cross-Platform App",
+    tech: ["React Native", "Expo", "Django", "AWS S3", "Firebase FCM", "PostgreSQL"],
+    description: "Full-stack mobile application featuring real-time social feeds, dynamic media uploads, push notifications, and asynchronous social graphing.",
+    highlights: [
+      "Real-time social feeds & interactions with optimized cached pagination.",
+      "Google OAuth 2.0 integration with biometric and JWT session security.",
+      "AWS S3 for scalable media asset pipelines and Firebase Cloud Messaging (FCM) for instant push alerts.",
+      "Asynchronous REST API architecture handling complex user graphs and relational feeds."
+    ],
+    github: "https://github.com/umair120115/Adora",
+    videoEmbed: "https://www.youtube.com/embed/KTwa1HyzDRg",
+    youtubeUrl: "https://www.youtube.com/watch?v=KTwa1HyzDRg"
+  },
+  {
+    id: "ayurveda-genai",
+    title: "Ayurveda GenAI Prototype",
+    category: "Generative AI & Healthcare",
+    badge: "🏆 Google GenAI Hackathon Finalist",
+    tech: ["Gemini 1.5", "Python", "FastAPI", "ReactJS", "Vector Embeddings"],
+    description: "A Generative AI solution for classical Ayurvedic knowledge retrieval, synthesizing millennia-old medical treatises into structured clinical insights.",
+    highlights: [
+      "Semantic indexing of classical Ayurvedic texts for domain-adapted symptom-to-herb mappings.",
+      "High-concurrency prototyping developed under a 6-hour hackathon constraint.",
+      "Evaluated on zero-hallucination factual grounding for medical formulations."
+    ],
+    github: "https://github.com/umair120115/Ayurveda",
+    videoEmbed: "https://www.youtube.com/embed/OwgrC97DOrs",
+    youtubeUrl: "https://youtu.be/OwgrC97DOrs"
+  },
   {
     id: "sih2026",
     title: "DoLR LARR Act 2013 Decision Support (SIH 2026)",
     category: "Explainable AI & Legal RAG",
-    tag: "🏆 National Finalist (SIH26017)",
+    badge: "🏆 National Finalist (SIH26017)",
     tech: ["FastAPI", "XGBoost", "TreeSHAP (XAI)", "PostgreSQL", "pgvector", "PostGIS", "Next.js 16"],
     description: "An AI decision-support platform designed for the Ministry of Rural Development to predict and mitigate statutory land acquisition delays across ₹4.8 Lakh Crore worth of national infrastructure.",
     highlights: [
@@ -123,7 +173,7 @@ export const OTHER_PROJECTS = [
     id: "veda-zoom",
     title: "Veda Global – Enterprise Zoom S2S OAuth Platform",
     category: "Enterprise Cloud Systems",
-    tag: "Production Architecture",
+    badge: "Production Architecture",
     tech: ["Next.js 15", "TypeScript", "Zoom Workplace REST API", "Server-to-Server OAuth", "Supabase"],
     description: "Centralized enterprise video infrastructure transition replacing fragile tutor-level OAuth with automated machine-to-machine Zoom Server-to-Server OAuth.",
     highlights: [
@@ -133,18 +183,46 @@ export const OTHER_PROJECTS = [
     ]
   },
   {
-    id: "adora",
-    title: "Adora Mobile Ecosystem",
-    category: "Mobile & Backend",
-    tag: "Cross-Platform Social",
-    tech: ["React Native", "Expo", "Django", "AWS S3", "Firebase FCM", "PostgreSQL"],
-    description: "Full-stack mobile application featuring real-time social feeds, media sharing, and cloud push notifications.",
+    id: "online-voting",
+    title: "Online Voting System with AI Guide",
+    category: "Web App & Security",
+    badge: "E-Governance & LLM",
+    tech: ["Django", "ReactJS", "LangChain", "Llama 3", "Groq Cloud", "PostgreSQL"],
+    description: "A secure, interactive election platform with an integrated AI chatbot for civic voter education and real-time voting results.",
     highlights: [
-      "Google OAuth 2.0 integration for frictionless onboarding.",
-      "AWS S3 for scalable media asset pipelines and Firebase Cloud Messaging for push delivery.",
-      "Asynchronous REST API architecture handling complex user graphs and relational feeds."
+      "Secure RESTful API backend with Django REST Framework, JWTs, and role-based access control.",
+      "Civic AI Chatbot powered by Llama 3 on Groq Cloud providing instant guidance on election guidelines.",
+      "Real-time voting telemetry visualization and audit trail logging."
     ],
-    github: "https://github.com/umair120115/Adora"
+    github: "https://github.com/umair120115/OnlineVoting"
+  },
+  {
+    id: "reader-edtech",
+    title: "Smart PDF Viewer & AI Note Taker",
+    category: "EdTech & AI Reader",
+    badge: "RAG Document Workspace",
+    tech: ["ReactJS", "Django DRF", "OpenAI API", "PDF.js", "PostgreSQL"],
+    description: "A smart document reader allowing users to upload PDFs, take time-stamped page-linked notes, and query document content with conversational AI.",
+    highlights: [
+      "Context-aware AI document querying with vector similarity retrieval.",
+      "Page-accurate timestamped bookmarking and note-taking tied directly to PDF canvas coordinates.",
+      "Cloud document storage and responsive document workstation interface."
+    ],
+    github: "https://github.com/umair120115/Reader"
+  },
+  {
+    id: "deen-social",
+    title: "Deen Real-Time Social Platform",
+    category: "Real-time Distributed Systems",
+    badge: "WebSockets & ASGI",
+    tech: ["Django Channels", "Redis", "ReactJS", "WebSockets", "PostgreSQL"],
+    description: "A high-performance real-time community social network featuring asynchronous direct messaging, live feeds, and connection graphs.",
+    highlights: [
+      "Instant real-time messaging architecture using Django Channels ASGI and Redis channel layers.",
+      "Dynamic activity feeds with optimistic UI updates for likes, comments, and notifications.",
+      "Bi-directional user relationship management and scalable WebSocket session handling."
+    ],
+    github: "https://github.com/umair120115/Deen"
   }
 ];
 
@@ -200,59 +278,148 @@ export const TECHNICAL_SKILLS = {
 
 export const EXPERIENCE_TIMELINE = [
   {
+    id: "corebase",
     role: "Lead Backend & Systems Engineer",
     company: "CoreBase",
     url: "https://corebase.in",
     period: "Jan 2025 – Present",
     location: "Lucknow, India",
-    type: "Full-Time",
-    bullets: [
-      "Architected the multi-tenant core backend using FastAPI and SQLAlchemy 2.0 (asyncpg) with Supabase PostgreSQL and Row-Level Security (RLS).",
-      "Engineered automated Razorpay billing pipeline for dynamic payment links, GST invoice generation, and idempotent webhook reconciliation.",
-      "Integrated Meta Graph API (WhatsApp) for automated lead capture, CRM communication tracking, and client follow-up alerts.",
-      "Implemented 3-tier hierarchical RBAC across 21+ manager endpoints and secured auth with JWTs and an Upstash Redis token blocklist."
+    type: "Full-Time Leadership",
+    summary: "Architecting the core cloud infrastructure and multi-tenant operating system powering Indian Chartered Accountant (CA) firms and MSMEs.",
+    contributions: [
+      {
+        title: "Multi-Tenant Data Architecture & RLS",
+        desc: "Engineered asynchronous FastAPI microservices with SQLAlchemy 2.0 (asyncpg) on Supabase PostgreSQL. Implemented strict Row-Level Security (RLS) policies guaranteeing cryptographic company data isolation across organizations."
+      },
+      {
+        title: "Automated Razorpay Billing & Reconciliation",
+        desc: "Designed the automated billing and subscription engine generating dynamic payment links, recurring invoices, and idempotent webhook listeners with automatic state reconciliation."
+      },
+      {
+        title: "Meta WhatsApp Cloud API CRM Integration",
+        desc: "Built bi-directional lead tracking and automated client notifications via Meta Graph API, directly integrating customer communications into the live CRM workspace."
+      },
+      {
+        title: "Hierarchical RBAC & Security Telemetry",
+        desc: "Architected 3-tier Role-Based Access Control spanning 21+ manager endpoints, protected by short-lived JWTs and an Upstash Redis token blocklist with P99 query latency under 50ms."
+      }
     ]
   },
   {
+    id: "dealmart",
     role: "Python Developer",
     company: "DealMart",
     period: "Feb 2025 – Present",
-    location: "Lucknow, India (Remote/Hybrid)",
-    type: "Contract / Hybrid",
-    bullets: [
-      "Engineered high-throughput multi-vendor e-commerce backend APIs using Django and PostgreSQL, optimizing queries for sub-100ms response times.",
-      "Integrated the Meta Developer Platform to build a WhatsApp automation bot, cutting manual customer support queries by 40%.",
-      "Implemented secure authentication flows using Google OAuth 2.0 with Redis session handling and FCM push notifications.",
-      "Integrated PhonePe payment gateways with strict webhook verification, ensuring 100% PCI-compliant transaction reconciliations."
+    location: "Lucknow, India (Hybrid)",
+    type: "Contract / Engineering",
+    summary: "Engineering high-throughput e-commerce APIs, customer engagement automation, and secure payment processing pipelines.",
+    contributions: [
+      {
+        title: "High-Throughput Multi-Vendor APIs",
+        desc: "Engineered scalable REST APIs using Django and PostgreSQL, optimizing complex database joins and caching layers to maintain sub-100ms response times under peak load."
+      },
+      {
+        title: "WhatsApp Automated Support Bot",
+        desc: "Integrated the Meta Developer Platform to engineer a 24/7 WhatsApp automation bot, deflecting manual customer inquiries by 40%."
+      },
+      {
+        title: "Payment Gateway Reconciliation & Auth",
+        desc: "Integrated PhonePe payment webhooks with cryptographic HMAC signature verification and Google OAuth 2.0 authentication backed by Redis session storage and FCM push notifications."
+      }
     ]
   },
   {
+    id: "duoples",
     role: "AI Engineer",
     company: "Duoples",
     period: "Dec 2024 – Feb 2025",
     location: "Remote",
-    type: "Contract",
-    bullets: [
-      "Architected a multi-tenant Retrieval-Augmented Generation (RAG) pipeline using Pinecone and ChromaDB with parent-document chunking.",
-      "Developed low-latency asynchronous REST APIs using FastAPI to stream tokenized LLM responses to web and mobile clients."
+    type: "Contract / AI R&D",
+    summary: "Designed and optimized generative AI pipelines and conversational retrieval engines for production applications.",
+    contributions: [
+      {
+        title: "Multi-Tenant RAG Pipeline Architecture",
+        desc: "Architected multi-tenant Retrieval-Augmented Generation (RAG) pipelines utilizing Pinecone and ChromaDB with parent-document chunking and reciprocal rank fusion."
+      },
+      {
+        title: "Low-Latency Token Streaming",
+        desc: "Developed asynchronous REST endpoints in FastAPI to stream tokenized LLM completions to web and mobile frontends with minimal initial token latency."
+      }
+    ]
+  },
+  {
+    id: "veda",
+    role: "Enterprise Cloud Systems Architect",
+    company: "Veda Global",
+    period: "Dec 2024 – Jan 2025",
+    location: "Remote",
+    type: "Architecture Consulting",
+    summary: "Re-engineered fragile tutor-level Zoom authentication into an automated, enterprise machine-to-machine video infrastructure.",
+    contributions: [
+      {
+        title: "Server-to-Server (S2S) OAuth Migration",
+        desc: "Replaced vulnerable user OAuth tokens with automated machine-to-machine Zoom S2S OAuth credentials, removing manual tutor re-authorization entirely."
+      },
+      {
+        title: "In-Memory Token Pre-Rotation",
+        desc: "Implemented in-memory token rotation triggering 5 minutes prior to expiry, cutting classroom meeting creation latency by 75% and eliminating race conditions."
+      },
+      {
+        title: "Fail-Fast Telemetry & Cloud Diagnostics",
+        desc: "Eliminated silent dummy link fallbacks with strict error handling, real Zoom IDs, and ZAK host start URL persistence to Supabase with real-time health telemetry."
+      }
     ]
   }
 ];
 
 export const EDUCATION_TIMELINE = [
   {
+    id: "integral",
+    type: "Post-Graduation",
     institution: "Integral University",
     degree: "Master of Technology (M.Tech) in Computer Science & Engineering",
     period: "2025 – 2027 (Pursuing)",
     location: "Lucknow, Uttar Pradesh",
-    focus: "Specializing in Distributed Systems, Advanced Algorithms, and Cognitive AI Architectures."
+    grade: "Pursuing",
+    focus: "Specializing in Distributed Systems, Advanced Algorithms, Cognitive AI Architectures, and Autonomous Agents.",
+    highlights: [
+      "Research Focus: Cognitive Architectures & Multi-Agent Consensus",
+      "Coursework: Soft Computing, Advanced Neural Networks, Distributed Operating Systems"
+    ]
   },
   {
-    institution: "Ajay Kumar Garg Engineering College",
+    id: "akgec",
+    type: "Under-Graduation",
+    institution: "Ajay Kumar Garg Engineering College (AKGEC)",
     degree: "Bachelor of Technology (B.Tech) in Computer Science & Engineering",
     period: "Nov 2021 – May 2025",
     location: "Ghaziabad, Uttar Pradesh",
-    focus: "Data Structures, Database Management Systems (DBMS), Operating Systems, Computer Networks, Soft Computing."
+    grade: "7.01 SGPA",
+    focus: "Built foundational expertise in Data Structures, Relational Database Management Systems (DBMS), Operating Systems, Computer Networks, and System Design.",
+    highlights: [
+      "Capstone: Ayurveda GenAI Prototype — Regional Finalist at Google GenAI Hackathon (Aug 2024).",
+      "Active participant in national hackathons and open-source software engineering."
+    ]
+  },
+  {
+    id: "montfort",
+    type: "Senior Secondary (Class XII)",
+    institution: "Montfort Inter College",
+    degree: "Class XII (Physics, Chemistry, Mathematics — CBSE)",
+    period: "Graduated 2020",
+    location: "Lucknow, Uttar Pradesh",
+    grade: "93.4%",
+    focus: "Distinction in Mathematics and Physics, establishing rigorous analytical and problem-solving foundations."
+  },
+  {
+    id: "stxaviers",
+    type: "Secondary School (Class X)",
+    institution: "St. Xavier's High School",
+    degree: "Class X (CBSE)",
+    period: "Graduated 2018",
+    location: "Azamgarh, Uttar Pradesh",
+    grade: "85.8%",
+    focus: "Comprehensive foundation in General Sciences, Mathematics, and Computer Applications."
   }
 ];
 
@@ -260,16 +427,19 @@ export const HONORS = [
   {
     title: "National Finalist — Smart India Hackathon (SIH 2026)",
     org: "Ministry of Rural Development / DoLR (SIH26017)",
-    desc: "Developed the official AI decision-support and Explainable AI legal platform predicting statutory land acquisition delays with XGBoost and pgvector RAG."
+    desc: "Engineered an AI decision-support platform predicting land acquisition delays across ₹4.8 Lakh Crore of national infrastructure using XGBoost, TreeSHAP, and pgvector RAG."
   },
   {
     title: "Regional Finalist — Google GenAI Hackathon",
-    org: "Google Developer Groups",
-    desc: "Rapidly prototyped high-concurrency generative AI applications with Google Gemini under a strict 6-hour on-spot time limit."
-  },
-  {
-    title: "Technical Certification: Data Science with Python",
-    org: "SpringBoard",
-    desc: "Advanced predictive data analytics, statistical modeling, and machine learning pipelines."
+    org: "Google Developer Groups (Aug 2024)",
+    desc: "Rapidly engineered and pitched an AI-based Ayurveda knowledge synthesis engine with Google Gemini under a strict 6-hour on-spot prototyping sprint."
   }
+];
+
+export const CERTIFICATIONS = [
+  { title: "Data Science with Python", issuer: "SpringBoard", date: "Verified" },
+  { title: "Full Stack Development", issuer: "Coursera", date: "Verified" },
+  { title: "Machine Learning Specialization", issuer: "Coursera", date: "Verified" },
+  { title: "React.js Advanced Architecture", issuer: "Codecademy", date: "Verified" },
+  { title: "Python for Data Science", issuer: "Udemy", date: "Verified" }
 ];
